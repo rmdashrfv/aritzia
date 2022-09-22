@@ -8,8 +8,12 @@ function App() {
           <p>Free shipping & returns on all orders, all the time. Shop now</p>
         </div>
         <div>
-          <div></div>
-          <div></div>
+          <div>
+            <a href="/">ARITZIA</a>
+          </div>
+          <div>
+            <input type="search" placeholder="Search" />
+          </div>
         </div>
       </nav>
       <h1>Aritzia</h1>
