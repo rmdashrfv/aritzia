@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 function App() {
   // const [stateVariable, functionToUpdateTheVariable] = useState(initialStateValue)
   const [cars, setCars] = useState([])
+  const [selectedCars, setSelectedCars] = useState([])
 
   // fetches car data from remote server
   useEffect(() => {
@@ -16,7 +17,8 @@ function App() {
     request()
   }, [])
 
-  const deleteCar = (car) => {
+  const moveCar = (car) => {
+    setSelectedCars([...selectedCars, car])
     setCars([...cars.filter(c => c.id !== car.id)]) 
   }
    
@@ -44,7 +46,15 @@ function App() {
       {
         cars.map((car) => {
           return(
-            <div onClick={() => { deleteCar(car) }}>{car.year} {car.make} {car.model}</div>
+            <div onClick={() => { moveCar(car) }}>{car.year} {car.make} {car.model}</div>
+          )
+        })
+      }
+      <hr />
+      {
+        selectedCars.map((car) => {
+          return(
+            <div>{car.year} {car.make} {car.model}</div>
           )
         })
       }
