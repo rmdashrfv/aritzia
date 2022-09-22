@@ -5,14 +5,20 @@ function App() {
   // const [stateVariable, functionToUpdateTheVariable] = useState(initialStateValue)
   const [cars, setCars] = useState([])
 
+  // fetches car data from remote server
   useEffect(() => {
     const request = async () => {
       let req = await fetch("https://raw.githubusercontent.com/rmdashrfv/aritzia/main/MOCK_DATA.json")
       let res = await req.json()
       console.log(res)
+      setCars(res)
     }
     request()
   }, [])
+
+  const deleteCar = (car) => {
+    setCars([...cars.filter(c => c.id !== car.id)]) 
+  }
    
 
   return (
@@ -38,7 +44,7 @@ function App() {
       {
         cars.map((car) => {
           return(
-            <div>{car.model}</div>
+            <div onClick={() => { deleteCar(car) }}>{car.year} {car.make} {car.model}</div>
           )
         })
       }
