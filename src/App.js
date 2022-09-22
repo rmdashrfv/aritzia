@@ -16,7 +16,10 @@ function App() {
           </div>
         </div>
       </nav>
-      <h1>Aritzia</h1>
+      <div>
+        <div id="left-panel"></div>
+        <div id="right-panel"></div>
+      </div>
     </div>
   );
 }
